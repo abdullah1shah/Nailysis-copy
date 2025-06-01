@@ -1,0 +1,122 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.container img {
+  cursor: pointer;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  flex-basis: 30%;
+  position: relative;
+}
+
+.searchBar input {
+  outline: none;
+  border: none;
+  background-color: #f5f5f5;
+  border-radius: 50px;
+  width: 100%;
+}
+
+.searchBar input::placeholder {
+  font-size: 14px;
+}
+
+.searchBar i {
+  font-size: 15px;
+  color: #777777;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+}
+
+/* 
+.search h5 {
+  font-size: 16px;
+  color: #888;
+  margin: 0;
+  flex-grow: 1;
+} */
+
+.navSide {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navSide button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s;
+}
+
+.navSide button:hover {
+  background-color: #0056cc;
+}
+
+.navSide div {
+  position: relative;
+}
+
+.navSide div img {
+  width: 24px;
+  height: 24px;
+}
+
+.navSide div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+/* NAVBAR RESPONSIVENESS */
+
+/* tablets & large phones */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 8px 12px;
+    margin-bottom: 70px;
+  }
+
+  /* hide search input to save space */
+  .searchBar {
+    display: none;
+  }
+  .navSide button {
+  }
+}
+
+/* narrow phones */
+@media screen and (max-width: 480px) {
+  .navSide {
+    gap: 12px;
+  }
+
+  /* make notification icon a bit smaller */
+  .navSide div img {
+    width: 20px;
+    height: 20px;
+  }
+}

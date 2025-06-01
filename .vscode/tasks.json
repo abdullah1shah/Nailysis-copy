@@ -1,0 +1,113 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Activate Virtual Environment",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-Command", "env/Scripts/activate"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Uvicorn Server",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "uvicorn backend.model_service.main:app --reload --port 8001"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Backend Server",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "${workspaceFolder}\\env\\Scripts\\python.exe manage.py runserver"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/backend"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    // {
+    //   "label": "Start WebSockets Server",
+    //   "type": "shell",
+    //   "command": "powershell",
+    //   "args": ["-Command", "daphne -b 0.0.0.0 -p 8001 backend.asgi:application"],
+    //   "options": {
+    //     "cwd": "${workspaceFolder}/backend"
+    //   },
+    //   "group": "build",
+    //   "presentation": {
+    //     "reveal": "always",
+    //     "panel": "new"
+    //   },
+    //   "problemMatcher": []
+    // },
+    {
+      "label": "Start Frontend Server",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev"],
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Auto Login",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-Command", "python login_automation.py"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Everything",
+      "dependsOn": [
+        "Activate Virtual Environment",
+        "Start Backend Server",
+        "Start Uvicorn Server",
+        // "Start WebSockets Server",
+        "Start Frontend Server",
+        "Start Auto Login"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
