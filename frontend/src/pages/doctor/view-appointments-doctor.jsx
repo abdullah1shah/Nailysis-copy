@@ -179,14 +179,14 @@ const AppointmentDoctor = (props) => {
     const fetchAppointments = async () => {
       try {
         const response = await api.get(
-          `${props.apiUrl}/api/doctor_appointments/`,
+          `${import.meta.env.VITE_API_URL}/api/doctor_appointments/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-
+        // handle response
         setAppointments(response.data);
         console.log("Response from doctor appointment", response.data);
       } catch (error) {
@@ -408,7 +408,5 @@ const AppointmentDoctor = (props) => {
     </div>
   );
 };
-
-
 
 export default AppointmentDoctor;
