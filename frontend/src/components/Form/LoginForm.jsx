@@ -97,7 +97,6 @@ function LoginForm({ route }) {
       toast.success("Login Successful!", {
         className: "custom-toast",
       });
-
     } catch (error) {
       console.error(error); // Display error message
       if (error.response && error.response.status === 401) {
@@ -105,7 +104,7 @@ function LoginForm({ route }) {
           className: "custom-toast",
         });
       } else {
-        toast.error ("Network Error");
+        toast.error("Network Error");
       }
     } finally {
       setLoading(false);
@@ -139,9 +138,26 @@ function LoginForm({ route }) {
               placeholder="Enter Password"
             />
           </div>
-          <button type="submit" className={styles.submitButton} disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
-          </button>
+
+          <div
+            style={{ display: "flex", justifyContent: "center", gap: "16px" }}
+          >
+            <button
+              type="submit"
+              className={styles.submitButton}
+              disabled={loading}
+            >
+              {loading ? "Logging in..." : "Login"}
+            </button>
+            <button
+              type="button"
+              className={styles.registerButton}
+              onClick={() => navigate("/register")}
+              disabled={loading}
+            >
+              Register
+            </button>
+          </div>
         </form>
       </section>
     </div>
